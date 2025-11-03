@@ -29,6 +29,37 @@
 				<h1 class="section-subtitle">Rendering with DirectX</h1>
 			</div> -->
 			<div class="section-entry">
+				<h1 class="section-subtitle">Managing Scope</h1>
+				<sub>03.11.2025</sub>
+				<p class="section-text">
+					Since the last entry, things have changed quite a bit around the engine. Before I even managed to make a post about the current rendering system with DirectX11 it has been replaced. 
+					But it served its purpose: Giving me a relatively quick view into 3D rendering with C++. It was still a step-up from programming in C# for Unity or JS for this website but in the 
+					world of graphics APIs, it was pretty straight forward.
+					<br><br>
+					But when I told a friend of mine of this project and she said: "DirectX11? Isn't that kinda old?" I realized she's right. I want to learn what the industry uses after all. And it turns out
+					that the companies I admire have moved on to lower-level APIs like DX12 or Vulkan to optimize even the smallest detail in their renderer. That's when I decided to get into Vulkan. I've looked
+					it up before, maybe even watched a tutorial but I never pulled through. So I took this project as the opportunity to finally do so.
+					<br><br>
+					My first plan was to abstract my current renderer to allow multiple APIs to be used. I started doing that for the DX11 side with no issues. Buffer classes, Shader classes, everything becomes
+					a generic version of itself. But when I arrived at Vulkan I realized that I have no clue how it works. I didn't know how and where the buffers are passed to the shaders, how to initialize a
+					pipeline (something which DX11 doesn't even need), what descriptor sets are, and thus I didn't know how I would abstract it to fit my generic renderer. It wasn't for a lack of trying; I spent
+					several weeks incrementally replacing parts of the hundreds of lines of code needed to render a triangle with functions that take a generic object instead of a Vulkan-specific one. But the
+					further I went, the more it became clear that this is not what I want to be doing. I wanted to do rendering, understand Vulkan, create cool effects but I was stuck wading through Vulkan 
+					functions I didn't understand.
+					<br><br>
+					So finally I pulled out the ol' reliable and started again from scratch, a move that is guaranteed to spark motivation and drive. New repository, new me. This time, I would be starting with Vulkan,
+					paying my due dilligence and learning it from the ground up. I reused the project structure, Cmake scripts and most of the Win32 code but the scope would be entirely on one renderer.
+					<br><br>
+					So since mid-september I have been at work getting the new Vulkan project to where I was before. And at the point of writing this, I'm pretty much there (or even past it). I can render arbitrary GLTF
+					models, show Imgui windows, process input (which I use to move the camera), and even use lighting. But the best part is, that it already has the structure that I need to do highly performant rendering
+					down the road where I'm not just passing in hardcoded coordinates of a cube but complete scenes with lights, meshes and textures.
+					<br><br>
+					I'm really happy that I made the switch because I can now focus on what I really want to do and learn. I can really recommend taking things one at a time, especially with something as complex as Vulkan.
+					This allowed me to learn each part individually to then put them together in the end. I will write some more posts in the future to go over the new rendering architecture (the window creation is still the same)
+					and input handler.
+				</p>
+			</div>
+			<div class="section-entry">
 				<h1 class="section-subtitle">Version Control with Git</h1>
 				<sub>12.05.2025</sub>
 				<p class="section-text">
