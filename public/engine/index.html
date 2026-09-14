@@ -31,7 +31,26 @@
 					<p class="section-text">
 						It has been quite a while since the last post and I haven't done a lot of Vulkan in that time. I have finished my master degree in the meantime though.
 						Anyways, as the title suggests, I have started over again; just after I talked about my last restart in the previous post. I'm still fully onboard with Vulkan, but I've come to
-						realize that the code I had before was mostly from a tutorial and too complex to understand why I'm doing what I'm doing. Previously, 
+						realize that the code I had before was mostly from a tutorial and too complex to understand why I'm doing what I'm doing. Previously, I repeatedly stated that I want to implement
+						clean designs and a solid architecture. But just like with other projects, this mentality caused a lot of decision paralysis because I always wanted to do it right. I was afraid of
+						having to refactor later so I spent a good amount of time looking at production-level game engines to decide how I should structure my vertex buffer submission. Meanwhile, other people
+						left me completely in the dust by just putting everything in one file with zero abstraction and refactoring small parts as they went along.
+						<br><br>
+						It finally clicked when I watched Sebastian Lague's new video where he starts writing his own graphics library. He just set off and quickly got to a point where he had a working shader
+						in which he could play around and have fun. So right after watching that video I went into the Git client of my choice (GitKraken at the moment), created a new repo, copied all the
+						entrypoint, window creation and Cmake stuff over and tried to build. Of course, as it seems destined to be, cmake was complaining, but after mere hours of wading through guides, examples,
+						and AI explanations, I got it working. Just like Sebastian, I started using the "How to Vulkan in 2026" tutorial but I quickly grew frustrated with it. Not only is the entire code
+						(including stuff that belongs in a header) in one file, there is also not a single empty line in that entire file. This wouldn't be as much of a problem if you just want to occasionally
+						look up the order of calls but the tutorial itself exludes a lot of "less interesting" code; so you always have to look at the source file to piece together what's happening in the tutorial.
+						<br><br>
+						So with only a few commits in the new repo, I decided to jump ship and find new instructional material. This is when I found out, that Khronos hosts a tutorial directly on vulkan.org.
+						I thought "Great, a tutorial by the creators themselves. That has to be the ideal way of learning (notice the only-the-best mentality again)". The tutorial is actually from an external
+						company but it uses the RAII C++ headers which I found enticing. Once I decided on the new tutorial, I went back into GitKraken, did a hard-reset to
+						the last commit that only dealt with non-Vulkan stuff and force-pushed that to the remote. Back to a clean slate we go.
+						<br><br>
+						I'm currently working on this setup. It took another few hours to get cmake working with the new project because I also decided to use the Vulkan module, but I'll dissect that in another post.
+						Right now, I'm back to the triangle for what feels like the 10th time (it's actually the 5th). I even havea vertex buffer already. Since I have some free time now that I transitioned
+						from student to jobless, I plan to work a lot more on this and also keep up with the blog posts. Let's see how that goes!
 					</p>
 				</div>
 			<div class="section-entry">
