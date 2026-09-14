@@ -243,12 +243,12 @@ header {
 }
 
 .project-description {
-    width: 50%;
+    width: 95%;
 }
 
 .project-image__img {
     object-fit: contain;
-    max-height: 400px;
+    max-height: 350px;
     max-width: min(360px, 80vw);
     border-radius: 5px;
 }
@@ -285,10 +285,10 @@ header {
 @media (max-width: 725px) {
 
     .hero-title {
-        font-size: 7em;
+        font-size: 4.5em;
     }
     .hero-subtitle {
-        font-size: 3em;
+        font-size: 2em;
     }
     
     .arrow-down__first {

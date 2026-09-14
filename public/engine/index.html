@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 	<meta charset="utf-8">
@@ -16,21 +16,21 @@
 <body>
 	<div class="container">
 		<a href="../index.html" class="back-link">← Back to main page</a href="../index.html">
-		<div class="section">
-			<div class="section-entry">
-				<h1 class="title">Developing a Game Engine</h1>
-                <p class="section-text">
+		<div class="blog-content">
+			<div class="blog-intro">
+				<h1 class="page-title">Developing a Game Engine</h1>
+                <p class="intro-text">
                     Welcome to my game engine blog. This is a project I started recently to learn more about game development and engine architecture and I will use this page to document my progress.
                     <br><br>
                     Stay tuned to follow me figure out various subsystems like rendering, physics, AI, and more.
 				</p>
 			</div>
-				<div class="section-entry">
-					<h1 class="section-subtitle">Oh, to start over again</h1>
-					<sub>10.09.2026</sub>
-					<p class="section-text">
+				<div class="blog-post">
+					<h1 class="post-title">Oh, to start over again</h1>
+					<sub class="post-date">10.09.2026</sub>
+					<p class="post-content">
 						It has been quite a while since the last post and I haven't done a lot of Vulkan in that time. I have finished my master degree in the meantime though.
-						Anyways, as the title suggests, I have started over again; just after I talked about my last restart in the previous post. I'm still fully onboard with Vulkan, but I've come to
+						Anyway, as the title suggests, I have started over again; just after I talked about my last restart in the previous post. I'm still fully onboard with Vulkan, but I've come to
 						realize that the code I had before was mostly from a tutorial and too complex to understand why I'm doing what I'm doing. Previously, I repeatedly stated that I want to implement
 						clean designs and a solid architecture. But just like with other projects, this mentality caused a lot of decision paralysis because I always wanted to do it right. I was afraid of
 						having to refactor later so I spent a good amount of time looking at production-level game engines to decide how I should structure my vertex buffer submission. Meanwhile, other people
@@ -38,44 +38,44 @@
 						<br><br>
 						It finally clicked when I watched Sebastian Lague's new video where he starts writing his own graphics library. He just set off and quickly got to a point where he had a working shader
 						in which he could play around and have fun. So right after watching that video I went into the Git client of my choice (GitKraken at the moment), created a new repo, copied all the
-						entrypoint, window creation and Cmake stuff over and tried to build. Of course, as it seems destined to be, cmake was complaining, but after mere hours of wading through guides, examples,
-						and AI explanations, I got it working. Just like Sebastian, I started using the "How to Vulkan in 2026" tutorial but I quickly grew frustrated with it. Not only is the entire code
+						entry point, window creation and CMake stuff over and tried to build. Of course, as it seems destined to be, CMake was complaining, but after mere hours of wading through guides, examples,
+						and AI explanations, I got it working. Just like Sebastian, I started using the "How to Vulkan in 2026" tutorial, but I quickly grew frustrated with it. Not only is the entire code
 						(including stuff that belongs in a header) in one file, there is also not a single empty line in that entire file. This wouldn't be as much of a problem if you just want to occasionally
-						look up the order of calls but the tutorial itself exludes a lot of "less interesting" code; so you always have to look at the source file to piece together what's happening in the tutorial.
+						look up the order of calls but the tutorial itself excludes a lot of "less interesting" code; so you always have to look at the source file to piece together what's happening in the tutorial.
 						<br><br>
 						So with only a few commits in the new repo, I decided to jump ship and find new instructional material. This is when I found out, that Khronos hosts a tutorial directly on vulkan.org.
 						I thought "Great, a tutorial by the creators themselves. That has to be the ideal way of learning (notice the only-the-best mentality again)". The tutorial is actually from an external
-						company but it uses the RAII C++ headers which I found enticing. Once I decided on the new tutorial, I went back into GitKraken, did a hard-reset to
+						company, but it uses the RAII C++ headers which I found enticing. Once I decided on the new tutorial, I went back into GitKraken, did a hard-reset to
 						the last commit that only dealt with non-Vulkan stuff and force-pushed that to the remote. Back to a clean slate we go.
 						<br><br>
-						I'm currently working on this setup. It took another few hours to get cmake working with the new project because I also decided to use the Vulkan module, but I'll dissect that in another post.
-						Right now, I'm back to the triangle for what feels like the 10th time (it's actually the 5th). I even havea vertex buffer already. Since I have some free time now that I transitioned
+						I'm currently working on this setup. It took another few hours to get CMake working with the new project because I also decided to use the Vulkan module, but I'll dissect that in another post.
+						Right now, I'm back to the triangle for what feels like the 10th time (it's actually the 5th). I even have a vertex buffer already. Since I have some free time now that I transitioned
 						from student to jobless, I plan to work a lot more on this and also keep up with the blog posts. Let's see how that goes!
 					</p>
 				</div>
-			<div class="section-entry">
-				<h1 class="section-subtitle">Managing Scope</h1>
-				<sub>03.11.2025</sub>
-				<p class="section-text">
+			<div class="blog-post">
+				<h1 class="post-title">Managing Scope</h1>
+				<sub class="post-date">03.11.2025</sub>
+				<p class="post-content">
 					Since the last entry, things have changed quite a bit around the engine. Before I even managed to make a post about the current rendering system with DirectX11 it has been replaced. 
 					But it served its purpose: Giving me a relatively quick view into 3D rendering with C++. It was still a step-up from programming in C# for Unity or JS for this website but in the 
 					world of graphics APIs, it was pretty straight forward.
 					<br><br>
-					But when I told a friend of mine of this project and she said: "DirectX11? Isn't that kinda old?" I realized she's right. I want to learn what the industry uses after all. And it turns out
+					But when I told a friend of mine of this project, and she said: "DirectX11? Isn't that kinda old?" I realized she's right. I want to learn what the industry uses after all. And it turns out
 					that the companies I admire have moved on to lower-level APIs like DX12 or Vulkan to optimize even the smallest detail in their renderer. That's when I decided to get into Vulkan. I've looked
-					it up before, maybe even watched a tutorial but I never pulled through. So I took this project as the opportunity to finally do so.
+					it up before, maybe even watched a tutorial, but I never pulled through. So I took this project as the opportunity to finally do so.
 					<br><br>
 					My first plan was to abstract my current renderer to allow multiple APIs to be used. I started doing that for the DX11 side with no issues. Buffer classes, Shader classes, everything becomes
 					a generic version of itself. But when I arrived at Vulkan I realized that I have no clue how it works. I didn't know how and where the buffers are passed to the shaders, how to initialize a
 					pipeline (something which DX11 doesn't even need), what descriptor sets are, and thus I didn't know how I would abstract it to fit my generic renderer. It wasn't for a lack of trying; I spent
 					several weeks incrementally replacing parts of the hundreds of lines of code needed to render a triangle with functions that take a generic object instead of a Vulkan-specific one. But the
-					further I went, the more it became clear that this is not what I want to be doing. I wanted to do rendering, understand Vulkan, create cool effects but I was stuck wading through Vulkan 
+					further I went, the more it became clear that this is not what I want to be doing. I wanted to do rendering, understand Vulkan, create cool effects, but I was stuck wading through Vulkan 
 					functions I didn't understand.
 					<br><br>
 					So finally I pulled out the ol' reliable and started again from scratch, a move that is guaranteed to spark motivation and drive. New repository, new me. This time, I would be starting with Vulkan,
-					paying my due dilligence and learning it from the ground up. I reused the project structure, Cmake scripts and most of the Win32 code but the scope would be entirely on one renderer.
+					paying my due diligence and learning it from the ground up. I reused the project structure, CMake scripts and most of the Win32 code, but the scope would be entirely on one renderer.
 					<br><br>
-					So since mid-september I have been at work getting the new Vulkan project to where I was before. And at the point of writing this, I'm pretty much there (or even past it). I can render arbitrary GLTF
+					So since mid-September I have been at work getting the new Vulkan project to where I was before. And at the point of writing this, I'm pretty much there (or even past it). I can render arbitrary GLTF
 					models, show Imgui windows, process input (which I use to move the camera), and even use lighting. But the best part is, that it already has the structure that I need to do highly performant rendering
 					down the road where I'm not just passing in hardcoded coordinates of a cube but complete scenes with lights, meshes and textures.
 					<br><br>
@@ -84,39 +84,39 @@
 					and input handler.
 				</p>
 			</div>
-			<div class="section-entry">
-				<h1 class="section-subtitle">Version Control with Git</h1>
-				<sub>12.05.2025</sub>
-				<p class="section-text">
-					I always use Git when I'm working on a project. It's invaluable for staying on top of what changed when and why. On thing I noticed when I started using Git was how my code base became
+			<div class="blog-post">
+				<h1 class="post-title">Version Control with Git</h1>
+				<sub class="post-date">12.05.2025</sub>
+				<p class="post-content">
+					I always use Git when I'm working on a project. It's invaluable for staying on top of what changed when and why. One thing I noticed when I started using Git was how my code base became
 					much cleaner because I could suddenly just delete things at a whim instead of commenting them out in case I need them again later. If it turns out that I do need them, I'll just check
 					the changes in Git and copy them from there. There have been a couple of times in this project where I started working on something and wondering: "Hang on, how did I do this before?".
-					With Git I can then just check out the commit where everything worked and use my IDE to the fullest instead of picking around individual commits trying to find definitions by hand.
+					With Git, I can then just check out the commit where everything worked and use my IDE to the fullest instead of picking around individual commits trying to find definitions by hand.
 				</p>
 				<h2>My tools</h2>
-				<p class="section-text">
+				<p class="post-content">
 					I use GitKraken as a Git client. There is certainly a benefit of using a CLI, especially at first to learn how everything works. But I've done that and having a GUI with all changes,
-					branches, remotes, commits and much more at a single glance I've been able to speed up my workflow by a lot. Now and then, when I can't find a specific command in GitKraken or it's not
+					branches, remotes, commits and much more at a single glance I've been able to speed up my workflow by a lot. Now and then, when I can't find a specific command in GitKraken, or it's not
 					specific enough I go back to the (integrated) terminal but for the most part I don't need that. The only thing that is extremely annoying with GitKraken is how it stashes things
-					automatically every time you tell it to pull, switch branches, checkout a commit, etc. I get that this way the action can be performed despite having uncommited changes on the working branch,
+					automatically every time you tell it to pull, switch branches, checkout a commit, etc. I get that this way the action can be performed despite having uncommitted changes on the working branch,
 					but most of the time I would prefer if it just gave me an error so I can decide how I want to handle this myself.
 					<br><br>
 					For my remote I just push everything to GitHub. It has a good integration with GitKraken and pretty much just works. I had no complaints about it in all the years I've used it.
 				</p>
 				<h2>Structure</h2>
-				<p class="section-text">
-					I started this project with just a single monolithic branch where everything goes down. Rewriting the entire engine to make it API-agnostic? - Master Branch. Reorganizing file Structure
-					with 50+ changed files? - Master branch. Implementing an entirely new feature? - You guessed it, master branch. This works of course, there are no merge conflicts so that's nice. But after
-					the 10th time of telling someone who asks about my progress that I had this cool feature but I can't show them right now because I'm rewriting it and I have about 200 compiler errors to get through before
+				<p class="post-content">
+					I started this project with just a single monolithic branch where everything goes down. Rewriting the entire engine to make it API-agnostic? — Master Branch. Reorganizing file Structure
+					with 50+ changed files? — Master branch. Implementing an entirely new feature? — You guessed it, master branch. This works of course, there are no merge conflicts so that's nice. But after
+					the 10th time of telling someone who asks about my progress that I had this cool feature, but I can't show them right now because I'm rewriting it and I have about 200 compiler errors to get through before
 					the program will even run again, I decided that it's time for a second branch. Introducing: The dev branch. From now on, I will develop all my changes on this branch and as soon as they're
 					ready, i.e., produce a working application, I will fast-forward the master branch to include the changes. This way, whenever I want to just showcase the current state I can simply switch
 					to the master branch and run the latest stable version on master without having to comment out every red squiggly line on dev to make it kinda run.
 				</p>
 			</div>
-			<div class="section-entry">
-				<h1 class="section-subtitle">Setting up the first window</h1>
-				<sub>09.05.2025</sub>
-				<p class="section-text">
+			<div class="blog-post">
+				<h1 class="post-title">Setting up the first window</h1>
+				<sub class="post-date">09.05.2025</sub>
+				<p class="post-content">
 					This post will deal with creating the first window. It's a great moment because it's the first time you actually get to see your creation.
 					Like any good setup functionality, this happens in an <code>Init</code> function, specifically that of <code>GfxDevice</code>. This class
 					combines Win32 stuff with DirectX stuff, though the implementations are split into their respective files. <code>Init</code> is defined in the D3D11 part
@@ -148,16 +148,16 @@
 					<br><br>
 					The input system will be covered in a future post.
 					<br><br>
-					To learn more about Window Procedurs in Win32, check out the <a class="inline-link" style="display: inline-block;" href="https://learn.microsoft.com/en-us/windows/win32/learnwin32/writing-the-window-procedure"><u><b>official documentation</b></u></a>.
+					To learn more about Window Procedures in Win32, check out the <a class="inline-link" style="display: inline-block;" href="https://learn.microsoft.com/en-us/windows/win32/learnwin32/writing-the-window-procedure"><u><b>official documentation</b></u></a>.
 				</p>
 			</div>
-			<div class="section-entry">
-				<h1 class="section-subtitle">Getting Started</h1>
-				<sub>30.04.2025</sub>
-                <p class="section-text">
-					This was probably the hardest step of them all and I'm still not quite done with it. Whenever I start a new project, I tend to get hung up on "doing it right" from the beginning so that
-					I don't have to change it later but it results in not making much progress. Since architecture is such a central part though, I allowed myself some more time to gather information.
-					I started following a DirectX tutorial by ChiliTomatoNoodle (yes, that's the name) and it got me started initially on DirectX but it wasn't good for architecture. Another resource I can
+			<div class="blog-post">
+				<h1 class="post-title">Getting Started</h1>
+				<sub class="post-date">30.04.2025</sub>
+                <p class="post-content">
+					This was probably the hardest step of them all, and I'm still not quite done with it. Whenever I start a new project, I tend to get hung up on "doing it right" from the beginning so that
+					I don't have to change it later, but it results in not making much progress. Since architecture is such a central part though, I allowed myself some more time to gather information.
+					I started following a DirectX tutorial by ChiliTomatoNoodle (yes, that's the name) and it got me started initially on DirectX, but it wasn't good for architecture. Another resource I can
 					recommend is the classic book "Game Engine Architecture" by Jason Gregory. It gives great insights on a lot of aspects of an engine but again, it was hard to develop an idea for how 
 					everything works together.
 					<br><br>
@@ -165,22 +165,22 @@
 					the code, peeling back the abstraction layers, finding out where the damn thing's entry point even was. But once I got used to it, I used it constantly to check their way of doing it.
 					<br><br>
 					The first big question mark I had was when I found that the reference engine used almost exclusively static functions and global variables in all the startup parts of the engine. Here I was
-					after years of university where object-oriented programming was the center of the universe looking at code, that was (almost) entirely without it. I checked the book again and it actually 
+					after years of university where object-oriented programming was the center of the universe looking at code, that was (almost) entirely without it. I checked the book again, and it actually 
 					recommended that exact approach so that's what I went with.
 				</p>
 				<h2>So this is the architecture as of now:</h2>
 				<i>There's a chart at the bottom</i>
-				<p class="section-text">
+				<p class="post-content">
 					There is the <code>main</code> function where the program enters. It lives inside the engine and all it does is call an entry point function that the game has set. This involves quite a nifty trick
-					where the game defines a static struct instance somewhere which sets function pointers to it's entry points. The engine then calls whatever is in those pointers. Since static variables 
+					where the game defines a static struct instance somewhere which sets function pointers to its entry points. The engine then calls whatever is in those pointers. Since static variables 
 					are initialized before the <code>main</code> function, the entry points are set before the engine starts up. This allows the game to define a prologue function which is run before everything else,
-					the main function which is run continuously in a loop and an epilogue function which is run after the game or engine has signaled to shutdown.
+					the main function which is run continuously in a loop and an epilogue function which is run after the game or engine has signaled to shut down.
 					<br>
 					And so we have a way of starting the engine while keeping the game separated yet still in control.
 					<br><br>
 					The game then creates an instance of <code>App</code> which is responsible for the lifecycle of the engine. The idea is to implement a finite state machine later on to manage the state
 					that the engine is in but for now, calling <code>App::RunOneIteration()</code> just checks a <code>isInitialized</code> flag and decides based on that whether to run <code>Init</code>
-					or <code>RunGame()</code>. But before that, the game can make use of it's prologue entry point to register init and update functions that it wants called once at startup or once a loop
+					or <code>RunGame()</code>. But before that, the game can make use of its prologue entry point to register init and update functions that it wants called once at startup or once a loop
 					respectively.
 					<br><br>
 					In the main game loop, the game calls <code>App::RunOneIteration()</code> which enters its first "state", the Init state. It calls the respective init functions of all subsystems in the
@@ -190,7 +190,7 @@
 					update functions are called before, finally, the frame is rendered.
 				</p>
 				<h2>And that's basically it</h2>
-				<P class="section-text">
+				<P class="post-content">
 					We have set up everything, we let it run until something asks for quitting at which point <code>App</code> runs it's final function <code>App::Shutdown()</code> and returns back to the 
 					engine entry point, which terminates the app. Easy, right?
 					<br><br>
@@ -198,7 +198,6 @@
 				</P>
 				<img src="../images/Architecture_1.jpg">
 			</div>
-		
 		</div>
 	</div>
 </body>
